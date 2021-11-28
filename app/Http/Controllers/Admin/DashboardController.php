@@ -15,12 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->hasRole('admin')) { 
-            return view('admin.pages.home.index');
-        } else {
-            return view('dashboard'); 
-        }
-        
+        return view('admin.pages.home.index');
     }
 
     /**

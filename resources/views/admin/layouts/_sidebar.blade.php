@@ -6,21 +6,36 @@
         </h6>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link {{Route::is('admin.dashboard.*')?'active':''}}" aria-current="page" href="#">
+                <a class="nav-link {{Route::is('admin.dashboard.*')?'active':''}}" aria-current="page" href="{{route('admin.dashboard.index')}}">
                     <span data-feather="home"></span>
                     Dashboard
                 </a>
-            </li>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link collapsed {{Route::is('admin.product.*') || Route::is('admin.category.*')?'active':''}}" href="{{route('admin.product.index')}}" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                    <span class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span data-feather="shopping-cart"></span>
+                            Products
+                        </div>
+                        <span data-feather="plus-circle"></span>
+                    </span>
+                </a> 
+                <div class="collapse {{Route::is('admin.product.*') || Route::is('admin.category.*')?'show':''}}" id="home-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"> 
+                    <li class="ml-5"><a class="nav-link {{Route::is('admin.category.*')?'active':''}}" style="padding-left: 42px;" href="{{route('admin.category.index')}}"> 
+                        Categories
+                    </a></li> 
+                    <li class="ml-5"><a class="nav-link {{Route::is('admin.product.*')?'active':''}}" style="padding-left: 42px;" href="{{route('admin.product.index')}}"> 
+                        Products
+                    </a></li> 
+                  </ul>
+                </div>
+              </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="file"></span>
                     Orders
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart"></span>
-                    Products
                 </a>
             </li>
             <li class="nav-item">
