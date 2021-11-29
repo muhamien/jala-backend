@@ -33,7 +33,7 @@
                 </div>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {{Route::is('admin.order.*')?'active':''}}" href="{{route('admin.order.index')}}">
                     <span data-feather="file"></span>
                     Orders
                 </a>
