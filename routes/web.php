@@ -1,5 +1,6 @@
 <?php
- 
+
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/checkout', [HomeController::class,'checkout'])->middleware(['auth'])->name('checkout');
+Route::get('/add_to_cart/{id}', [HomeController::class,'add_to_cart'])->middleware(['auth'])->name('add_to_cart');
+Route::get('/remove_from_cart/{id}', [HomeController::class,'remove_from_cart'])->middleware(['auth'])->name('remove_from_cart');
+Route::get('/order/{id}', [HomeController::class,'order'])->middleware(['auth'])->name('order');
+Route::get('/history/{id}', [HomeController::class,'history'])->middleware(['auth'])->name('history');
  
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['role:user'])->name('dashboard'); 
-
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

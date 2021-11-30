@@ -64,7 +64,7 @@
                                 @endif
                               </tr> 
                               @endforeach
-                              @if ($edit->status == 0)
+                              @if ($edit->status == 0 ||$edit->status == 3 )
                               <tr>
                                   <form action="{{route('admin.order.detail.add',['order'=>$edit->id])}}" method="POST">
                                       @csrf 
@@ -104,9 +104,9 @@
                             <tr> 
                                 <td colspan="3" class="text-center"><b>Total</b></td>
                                 <td class="fw-bold">Rp. {{number_format($edit->total,0)}}</td> 
-                                @if ($edit->status == 0)
+                                @if ($edit->status == 0||$edit->status == 3)
                                 <td> 
-                                    <a href="{{route('admin.order.process',$edit->id)}}" class="btn btn-primary w-100 {{$edit->total<1||$edit->status>0 ? 'disabled':''}}">Process</button> 
+                                    <a href="{{route('admin.order.process',$edit->id)}}" class="btn btn-primary w-100 {{$edit->total<1||$edit->status==0||$edit->status == 3 ? '':'disabled'}}">Process</button> 
                                 </td>
                                 @endif
                               </tr> 
